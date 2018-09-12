@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.navbar {
+  border-radius: 0;
+}
+
+.title {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.main {
+  background-color: #fff;
+}
+
+.block {
+  padding: 20px 10px 20px 20px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+.addNew {
+  margin-bottom: 30px;
+}
+
+.addNew .form-group{
+  display: block;
+  width: 100%;
+}
+
+.addNew .form-group input{
+  display: block;
+  width: 100%;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 300;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #2c2c2c;
+  margin-bottom: 20px;
+}
+
+.item .btn{
+  border-color: firebrick;
+  color: firebrick;
+}
+
+
+.item .badge{
+  background-color: #5bc0de;
+}
+
+
+.item {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  cursor: pointer;
+}
+
+.item.active:before {
+  position: absolute;
+  top: 0;
+  left: -22px;
+  content: '';
+  height: 100%;
+  width: 4px;
+  display: block;
+  background-color: firebrick;
+}
+
+.item .col-sm-3{
+  text-align: right;
+}
+
+.item__title {
+  display: block;
+  min-height: 30px;
+}
+.item__title p {
+  margin-bottom: 0;
+  line-height: 30px;
+}
+
+
+.comments {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.comment {
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+.comment__ava {
+  float: left;
+  width: 50px;
+  height: 50px;
+  background-color: lightcoral;
+}
+
+.addPost .comment__ava {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.comment__ava--1, .addPost #ava--1 {
+  background-color: lightcoral;
+}
+
+.comment__ava--2, .addPost #ava--2 {
+  background-color: blue;
+}
+
+.comment__ava--3, .addPost #ava--3 {
+  background-color: green;
+}
+
+
+
+.addPost .comment{
+  border: 0;
+}
+
+.addPost .comment__txt textarea{
+  border: 1px solid #ccc;
+  display: block;
+  width: 100%;
+  height: 75px;
+}
+
+.comment__txt {
+  margin-left: 60px;
+  font-size: 12px;
+  font-weight: 300;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #2c2c2c;
+}
+
+.users {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.users input:checked + label {
+  color: green;
+}
+
+.users input {
+  display: none;
+}
+
+.users label {
+  cursor: pointer;
+  margin-right: 10px;
+}
