@@ -4,10 +4,6 @@ body {
   font-family: sans-serif;
 }
 
-.navbar {
-  border-radius: 0;
-}
-
 .title {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 24px;
@@ -40,11 +36,16 @@ body {
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 300;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #2c2c2c;
   margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
 }
 
 .item .btn{
