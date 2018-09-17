@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './style.css'
 import Item from '../item/index';
 import AddItemForm from '../add-item-form/index';
+import { connect } from 'react-redux';
 
 class ItemList extends Component {
 
@@ -11,21 +12,22 @@ class ItemList extends Component {
     };
 
     handleClick = (item) => (event) =>  {
-        console.log(item);
+        //console.log(item);
+        event.preventDefault();
         this.props.setActive(item);
     };
 
-    renderItemsElements = () => {
-        return this.props.items.map( item => {
-            return (
-                <div className="itemWrapper" onClick={this.handleClick(item)} key={ item.id }>
-                    <Item item={ item } key={ item.id } />
-                </div>
-            );
-        });
-    };
-
     render(){
+        const { items } = this.props;
+
+        const renderItemsElements = items.map( item => {
+            return (
+                    <div className="itemWrapper" onClick={this.handleClick(item)} key={ item.id }>
+                        <Item item={ item } key={ item.id } />
+                    </div>
+                )
+            }
+        );
 
         return (
             <div className="items-wrapper block">
@@ -35,7 +37,7 @@ class ItemList extends Component {
 
                 <div className="items">
 
-                    { this.renderItemsElements() }
+                    { renderItemsElements }
 
                 </div>
 
@@ -45,4 +47,6 @@ class ItemList extends Component {
 
 }
 
-export default ItemList;
+export default connect(state => ({
+    items: state.items
+}))(ItemList);

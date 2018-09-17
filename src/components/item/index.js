@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
+import { connect } from 'react-redux';
+import { deleteItem } from '../../AC/index';
 
 class Item extends Component {
 
@@ -10,6 +12,12 @@ class Item extends Component {
             title: PropTypes.string,
             comments: PropTypes.array
         })
+    };
+
+    handleDelete = () => {
+        const { deleteItem, item } = this.props;
+        deleteItem( item.id );
+        console.log('delete');
     };
 
     render() {
@@ -25,7 +33,7 @@ class Item extends Component {
                         </div>
                     </div>
                     <div className="col-sm-3">
-                        <button className="btn btn-default" type="submit">Delete</button>
+                        <button className="btn btn-default" onClick={ this.handleDelete }>Delete</button>
                     </div>
                 </div>
             </div>
@@ -33,4 +41,4 @@ class Item extends Component {
     }
 }
 
-export default Item;
+export default connect(null, { deleteItem })(Item);
