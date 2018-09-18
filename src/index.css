@@ -59,7 +59,7 @@ h3 {
 }
 
 
-.item {
+.itemWrapper {
   padding-top: 7px;
   padding-bottom: 7px;
   border-bottom: 1px solid #ccc;
@@ -67,7 +67,7 @@ h3 {
   cursor: pointer;
 }
 
-.item.active:before {
+.itemWrapper.active:before {
   position: absolute;
   top: 0;
   left: -22px;

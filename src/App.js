@@ -6,12 +6,11 @@ import ItemList from "./components/items-list/index";
 import Comments from "./components/comments/index"
 
 import { connect } from 'react-redux';
-import { items } from './data';
 
 class App extends Component {
 
   state = {
-      task : items[0]
+      task : {}
   };
 
   setActiveItem = item => {
@@ -21,7 +20,7 @@ class App extends Component {
   };
 
   render() {
-
+    const { items } = this.props;
     const { task } = this.state;
 
     return (
@@ -33,12 +32,12 @@ class App extends Component {
                 <div className="row">
                     <div className="col-xs-12 col-md-6">
 
-                        <ItemList items={ items } setActive={ this.setActiveItem } />
+                        <ItemList items={ items } setActive={ this.setActiveItem }/>
 
                     </div>
                     <div className="col-xs-12 col-md-6">
 
-                        <Comments item={ task }/>
+                        <Comments item={ task.id ? task : items[0] } />
 
                     </div>
 
@@ -49,12 +48,6 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-    return {
-
-    }
-}
-
-const mapToDispach = {};
-
-export default connect(mapStateToProps, mapToDispach)(App);
+export default connect(state => ({
+    items: state.items
+}))(App);

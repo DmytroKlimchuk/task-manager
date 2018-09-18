@@ -14,7 +14,9 @@ class Item extends Component {
         })
     };
 
-    handleDelete = () => {
+    handleDelete = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         const { deleteItem, item } = this.props;
         deleteItem( item.id );
         console.log('delete');
