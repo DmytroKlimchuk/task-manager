@@ -14,17 +14,18 @@ class Item extends Component {
         })
     };
 
-    handleDelete = (e) => {
+    handleDelete = (id) => (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const { deleteItem, item } = this.props;
-        deleteItem( item.id );
+        let { deleteItem } = this.props;
+        deleteItem( id );
         console.log('delete');
     };
 
     render() {
 
-        const { item } = this.props;
+        let { item } = this.props;
+        console.log(item.id, item.comments.length);
 
         return (
             <div className="item">
@@ -35,7 +36,7 @@ class Item extends Component {
                         </div>
                     </div>
                     <div className="col-sm-3">
-                        <button className="btn btn-default" onClick={ this.handleDelete }>Delete</button>
+                        <button className="btn btn-default" onClick={ this.handleDelete(item.id) }>Delete</button>
                     </div>
                 </div>
             </div>
@@ -43,4 +44,6 @@ class Item extends Component {
     }
 }
 
-export default connect(null, { deleteItem })(Item);
+export default connect(state => ({
+    items: state.items
+}), { deleteItem })(Item);

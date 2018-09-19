@@ -20,18 +20,22 @@ class AddItemForm extends Component {
         e.preventDefault();
         const { addItem } = this.props;
 
-        let item = {
-          "id": new Date().getTime(),
-          "title": this.state.title,
-          "comments": []
-        };
+        if (!this.refs.title.classList.contains('form-input__error') ) {
 
-        addItem(item);
-        this.setState({ title: ''});
-        console.log('ADD', item);
+            let item = {
+                "id": new Date().getTime(),
+                "title": this.state.title,
+                "comments": []
+            };
+
+            addItem(item);
+            this.setState({ title: ''});
+            console.log('ADD', item);
+
+        }
     };
 
-    getClassName = type => this.state[type].length && this.state[type].length < limits[type].min
+    getClassName = type => !this.state[type].length || this.state[type].length < limits[type].min
         ? 'form-input__error' : '';
 
 
@@ -41,7 +45,7 @@ class AddItemForm extends Component {
                 <div className="row">
                     <div className="col-sm-9">
                         <div className="form-group">
-                            <input type="text" value={this.state.title} placeholder="Type title here ..." onChange={ this.handleChange } className= {this.getClassName('title')}/>
+                            <input type="text" ref="title" value={this.state.title} placeholder="Type title here ..." onChange={ this.handleChange } className= {this.getClassName('title')}/>
                         </div>
                     </div>
                     <div className="col-sm-3">

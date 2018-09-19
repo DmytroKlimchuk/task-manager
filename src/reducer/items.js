@@ -1,5 +1,5 @@
 import { items as defaultItems } from '../data';
-import { DELETE_ITEM, ADD_ITEM } from '../constants';
+import { DELETE_ITEM, ADD_ITEM, ADD_COMMENT } from '../constants';
 
 export default (itemState = defaultItems, action) => {
     const { type, payload } = action;
@@ -13,6 +13,18 @@ export default (itemState = defaultItems, action) => {
             console.log(added);
             return added;
         }
+
+        case ADD_COMMENT: {
+            let arr = itemState.slice();
+
+            arr.forEach(item => {
+                if ( item.id == payload.id ) item.comments.push(payload.comment);
+            });
+
+            return arr;
+        }
+
+
     }
 
     return itemState;

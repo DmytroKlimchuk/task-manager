@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 import Comment from "../comment/index";
+import AddCommentForm from '../add-comment-form';
 
 class Comments extends Component {
 
@@ -29,14 +30,7 @@ class Comments extends Component {
 
                 </div>
 
-                <form action="#" method="POST" className="addPost">
-                    <div className="comment">
-                        <div className="comment__ava"></div>
-                        <div className="comment__txt">
-                            <textarea id="message" name="message"></textarea>
-                        </div>
-                    </div>
-                </form>
+                <AddCommentForm id={item.id}/>
 
             </div>
         );
