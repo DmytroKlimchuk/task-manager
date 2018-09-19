@@ -20,3 +20,4 @@ export function addComment(id, comment) {
         payload: { id, comment }
     }
 }
+
