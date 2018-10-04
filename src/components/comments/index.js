@@ -22,7 +22,7 @@ class Comments extends Component {
         return (
             <div className="comments-wrapper block">
                 <h2 className="subtitle">{ item.title }</h2>
-                <h3>Comments</h3>
+                <h4>Коментарі:</h4>
 
                 <div className="comments">
 

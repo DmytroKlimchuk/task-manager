@@ -3,10 +3,12 @@ import './style.css'
 import Item from '../item/index';
 import AddItemForm from '../add-item-form/index';
 
+
 class ItemList extends Component {
 
     state = {
-        activeId : 1
+        activeId : 1,
+        showAddForm : false
     };
 
     handleClick = (item) => (event) =>  {
@@ -16,11 +18,19 @@ class ItemList extends Component {
         });
 
         this.props.setActive(item);
+    };
 
+    handleShowAddForm = () => {
+      const { showAddForm } = this.state;
+      this.setState({
+          showAddForm: !showAddForm
+      });
     };
 
     render(){
         const { items } = this.props;
+        const { showAddForm } = this.state;
+        const classBtn = showAddForm ? 'minus' : 'plus';
 
         console.log(items);
 
@@ -35,9 +45,15 @@ class ItemList extends Component {
 
         return (
             <div className="items-wrapper block">
-                <h2>Items</h2>
+                { showAddForm ? (<AddItemForm />) : '' }
 
-                <AddItemForm />
+                <header className="items-header">
+                    <h2>Список поточних задач</h2>
+
+                    <button className="btn btn-default addNew" onClick={this.handleShowAddForm}>
+                        <span className={`glyphicon glyphicon-${classBtn}`} aria-hidden="true"></span>
+                    </button>
+                </header>
 
                 <div className="items">
 

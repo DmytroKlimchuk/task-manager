@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
+import ava from '../../images/ava.jpg';
 import { connect } from 'react-redux';
 import { addComment } from '../../AC/index';
 
@@ -26,9 +27,12 @@ class AddCommentForm extends Component {
     render() {
         return (
             <form action="#" method="POST" className="addPost">
+                <h4>Залишити коментар:</h4>
                 <div className="comment">
-                    <div className="comment__ava"></div>
-                    <div className="comment__txt">
+                    <div className="comment__ava">
+                        <img src={ ava } alt=""/>
+                    </div>
+                    <div className="comment__txt arr_left">
                         <textarea id="message" name="message" onKeyUp={this.handleKeyUp} />
                     </div>
                 </div>

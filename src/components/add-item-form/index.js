@@ -42,6 +42,7 @@ class AddItemForm extends Component {
     render() {
         return (
             <form className="form-inline addNew">
+                <h2>Додати нову задачу</h2>
                 <div className="row">
                     <div className="col-sm-9">
                         <div className="form-group">
@@ -49,7 +50,7 @@ class AddItemForm extends Component {
                         </div>
                     </div>
                     <div className="col-sm-3">
-                        <button className="btn btn-info add" onClick={ this.handleAdd }>Add new</button>
+                        <button className="btn btn-info add" onClick={ this.handleAdd }>Додати</button>
                     </div>
                 </div>
             </form>

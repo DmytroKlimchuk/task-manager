@@ -1,0 +1,7 @@
+.addPost .comment__txt textarea {
+    border: 0;
+    outline: 0;
+    display: block;
+    width: 100%;
+    min-height: 40px;
+}

@@ -1,0 +1,24 @@
+.items-header {
+    position: relative;
+}
+
+.items-header h2 {
+    margin-right: 30px;
+}
+
+.items-header .btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.items-header .addNew{
+    outline: 0;
+    border: 0;
+    color: green;
+    background-color: transparent;
+}
+
+.items-header .addNew:hover{
+    background-color: transparent;
+}
