@@ -8,9 +8,10 @@ class AddCommentForm extends Component {
 
     handleKeyUp = (event) => {
         const value = event.target.value;
-
+        console.log('click');
         if( event.keyCode == 13 && event.ctrlKey && value.length > 0) {
             const { id, addComment } = this.props;
+            console.log('click +');
 
             let comment = {
                 "id": new Date().getTime(),

@@ -24,7 +24,10 @@ class Item extends Component {
         console.log('delete', id);
     };
 
-    handleDelete = (id) => {
+    handleDelete = (id) => (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
         return MySwal.fire({
             title: 'Ви впевнені?',
             text: "Скасувати дану дію буде неможливо!",
@@ -32,7 +35,8 @@ class Item extends Component {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Так, видалити!'
+            confirmButtonText: 'Так, видалити!',
+            cancelButtonText: 'Скасувати'
 
         }).then((result) => {
             if (result.value) {
@@ -53,13 +57,13 @@ class Item extends Component {
         return (
             <div className="item">
                 <div className="row" >
-                    <div className="col-sm-9">
+                    <div className="col-sm-10">
                         <div className="item__title">
                             <p>{ item.title } <span className="badge">{ item.comments.length }</span></p>
                         </div>
                     </div>
-                    <div className="col-sm-3">
-                        <button className="btn btn-default" onClick={()=>this.handleDelete(item.id)}>
+                    <div className="col-sm-2">
+                        <button className="btn btn-default" onClick={this.handleDelete(item.id)}>
                             <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
                         </button>
                     </div>

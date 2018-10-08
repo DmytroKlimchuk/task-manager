@@ -17,6 +17,7 @@ class Comments extends Component {
     render() {
 
         const { item } = this.props;
+
         const commentsElements = item.comments.map( comment => <Comment key={ comment.id } comment={ comment }/>);
 
         return (
@@ -26,7 +27,7 @@ class Comments extends Component {
 
                 <div className="comments">
 
-                    { commentsElements }
+                    { commentsElements.length ? commentsElements : 'коментарі відсутні'}
 
                 </div>
 

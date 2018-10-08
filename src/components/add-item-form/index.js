@@ -2,42 +2,43 @@ import React, { Component } from 'react';
 import './style.css';
 import { connect } from 'react-redux';
 import { addItem } from '../../AC/index';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+const MySwal = withReactContent(Swal);
 
 class AddItemForm extends Component {
 
-    state = {
-        title : ''
-    };
-
-    handleChange = (e) => {
-        console.log('input');
-        this.setState({
-            title: e.target.value
-        });
-    };
 
     handleAdd = (e) => {
         e.preventDefault();
-        const { addItem } = this.props;
+        let errors = [];
+        let title = this.refs.title.value;
 
-        if (!this.refs.title.classList.contains('form-input__error') ) {
+        if (title == '') errors.push('Необхідно заповнити назву задачі');
+        if (title.length <= 5) errors.push('Мінімальна назва - 5 символів');
+
+        if (errors.length == 0) {
+            const { addItem } = this.props;
 
             let item = {
                 "id": new Date().getTime(),
-                "title": this.state.title,
+                "title": title,
                 "comments": []
             };
 
             addItem(item);
-            this.setState({ title: ''});
             console.log('ADD', item);
+        } else {
 
+            return MySwal.fire({
+                type: 'error',
+                title: 'Помилка!',
+                text: errors[0]
+            })
         }
+
     };
-
-    getClassName = type => !this.state[type].length || this.state[type].length < limits[type].min
-        ? 'form-input__error' : '';
-
 
     render() {
         return (
@@ -46,7 +47,7 @@ class AddItemForm extends Component {
                 <div className="row">
                     <div className="col-sm-9">
                         <div className="form-group">
-                            <input type="text" ref="title" value={this.state.title} placeholder="Type title here ..." onChange={ this.handleChange } className= {this.getClassName('title')}/>
+                            <input type="text" ref="title" placeholder="Введіть назву задачі ..."/>
                         </div>
                     </div>
                     <div className="col-sm-3">
@@ -57,12 +58,5 @@ class AddItemForm extends Component {
         );
     }
 }
-
-const limits = {
-    title: {
-        min: 5,
-        max: 50
-    }
-};
 
 export default connect(null, { addItem })(AddItemForm);

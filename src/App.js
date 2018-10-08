@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Navigation from "./components/navigation/index";
 import ItemList from "./components/items-list/index";
 import Comments from "./components/comments/index"
 
@@ -26,23 +25,23 @@ class App extends Component {
     return (
         <div className="page">
 
-            <Navigation/>
+            <div className="container">
+                <main className="main book">
+                    <div className="row">
+                        <div className="col-xs-12 col-md-6 list">
 
-            <main className="main container">
-                <div className="row">
-                    <div className="col-xs-12 col-md-6">
+                            <ItemList items={ items } setActive={ this.setActiveItem }/>
 
-                        <ItemList items={ items } setActive={ this.setActiveItem }/>
+                        </div>
+                        <div className="col-xs-12 col-md-6 list">
+
+                            <Comments item={ task.id ? task : items[0] } />
+
+                        </div>
 
                     </div>
-                    <div className="col-xs-12 col-md-6">
-
-                        <Comments item={ task.id ? task : items[0] } />
-
-                    </div>
-
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
     );
   }

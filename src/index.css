@@ -1,7 +1,59 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 40px 0;
   font-family: sans-serif;
+  background: url('/img/desk.jpg') no-repeat top center;
+  background-size: cover;
+}
+
+.book {
+  border: 15px solid #524741;
+  border-radius: 10px;
+  position: relative;
+}
+
+.book::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 50%;
+  margin-left: -6px;
+  width: 12px;
+  height: 100%;
+  background-color: #524741;
+}
+
+.book:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 50%;
+  margin-left: -30px;
+  width: 60px;
+  height: 100%;
+  background: url('/img/stick.png') top center repeat-y;
+  z-index: 5;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 992px) {
+  .book::after {
+    display: none;
+  }
+  .book:before {
+    display: none;
+  }
+}
+
+.book > .row {
+  min-height: inherit;
+  height: 100%;
+}
+
+.list {
+  min-height: inherit;
+  height: 100%;
+  padding-bottom: 0px;
 }
 
 .title {
@@ -17,8 +69,7 @@ body {
 }
 
 .block {
-  padding: 20px 10px 20px 20px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+  padding: 20px 20px 20px 30px;
 }
 
 .addNew {
@@ -73,10 +124,10 @@ h3 {
 .itemWrapper.active:before {
   position: absolute;
   top: 0;
-  left: -22px;
+  left: -30px;
   content: '';
   height: 100%;
-  width: 4px;
+  width: 5px;
   display: block;
   background-color: firebrick;
 }
@@ -87,11 +138,12 @@ h3 {
 
 .item__title {
   display: block;
-  min-height: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .item__title p {
   margin-bottom: 0;
-  line-height: 30px;
+  line-height: 1.5;
 }
 
 
