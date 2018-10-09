@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "firebase": "^5.5.3",
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
+    "react-router": "^3.2.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "redux": "^4.0.0",
     "sweetalert2": "^7.28.4",
@@ -18,5 +21,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "devDependencies": {}
 }
