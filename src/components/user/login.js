@@ -4,7 +4,7 @@ import './user.css';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import app from "../../base";
 
 const MySwal = withReactContent(Swal);
@@ -18,19 +18,30 @@ class Login extends Component {
             const user = await app
                 .auth()
                 .signInWithEmailAndPassword(email.value, password.value);
-            
+
             return MySwal.fire({
                 type: 'success',
                 title: 'Авторизація пройшла успішно!',
                 text: ''
-            }).then( () => browserHistory.push(`/`) );
+            }).then( () => browserHistory.push('/') );
 
         } catch (error) {
+
+            switch (error.code) {
+                case 'auth/user-not-found' : return MySwal.fire({
+                    type: 'error',
+                    title: 'Помилка авторизації',
+                    text: 'Такого користувача не знайдено!'
+                });
+                case 'auth/wrong-password' : return MySwal.fire({type: 'error', title: 'Помилка авторизації', text: 'Пароль не вірний!'});
+            }
+
             return MySwal.fire({
                 type: 'error',
                 title: 'Помилка!',
                 text: error
             })
+
         }
     };
 
@@ -53,6 +64,9 @@ class Login extends Component {
                                 </div>
                                 <div className="form-group">
                                     <input type="password" className="form-control" id="inputPassword" name="password" placeholder="Пароль"/>
+                                </div>
+                                <div className="forgot">
+                                    <Link to="/signup"><span>Нема аккаунта?</span></Link>
                                 </div>
                                 <button type="submit" className="btn btn-primary">Вхід</button>
                             </form>

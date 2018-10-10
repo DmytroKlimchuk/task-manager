@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-
 import ItemList from "./components/items-list/index";
 import Comments from "./components/comments/index"
-
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import app from "./base";
 
 class App extends Component {
 
@@ -18,15 +18,21 @@ class App extends Component {
       });
   };
 
+  handleClose = () => {
+      app.auth().signOut();
+      browserHistory.push('/login');
+  };
+
   render() {
     const { items } = this.props;
-    const { task } = this.state;
+    const {task } = this.state;
 
     return (
         <div className="page">
 
             <div className="container">
                 <main className="main book">
+                    <span className="close" onClick={this.handleClose}></span>
                     <div className="row">
                         <div className="col-xs-12 col-md-6 list">
 

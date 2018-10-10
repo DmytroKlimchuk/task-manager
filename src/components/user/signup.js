@@ -4,7 +4,7 @@ import './user.css';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import app from "../../base";
 
 const MySwal = withReactContent(Swal);
@@ -15,7 +15,7 @@ class Signup extends Component {
         event.preventDefault();
         const { email, password } = event.target.elements;
         try {
-            const user = await app
+            const user = app
                 .auth()
                 .createUserWithEmailAndPassword(email.value, password.value);
             return MySwal.fire({
@@ -52,6 +52,11 @@ class Signup extends Component {
                                 </div>
                                 <div className="form-group">
                                     <input type="password" className="form-control" id="inputPassword" name="password" placeholder="Пароль"/>
+                                </div>
+                                <div className="forgot">
+                                    <Link to="/login">
+                                        <span>Вже є аккаунт</span>
+                                    </Link>
                                 </div>
                                 <button type="submit" className="btn btn-primary">Створити аккаунт</button>
                             </form>
