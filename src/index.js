@@ -4,14 +4,10 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min';
 import './index.css';
 import Root from './Root';
-import store from './store/index';
-import { Provider } from 'react-redux';
 
 
 ReactDOM.render(
-    <Provider store={ store }>
-        <Root/>
-    </Provider>,
+        <Root/>,
     document.getElementById('root')
 );
 

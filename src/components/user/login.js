@@ -1,10 +1,11 @@
 import React, { Component  } from 'react';
+import { Router, Route, Link, browserHistory, Redirect } from 'react-router';
 import './user.css';
 
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-import { Link, browserHistory } from 'react-router';
+
 import app from "../../base";
 
 const MySwal = withReactContent(Swal);
@@ -23,7 +24,10 @@ class Login extends Component {
                 type: 'success',
                 title: 'Авторизація пройшла успішно!',
                 text: ''
-            }).then( () => browserHistory.push('/') );
+            }).then( () => {
+                return browserHistory.push('/');
+                //return (<Redirect path='/login' to="/"/>);
+                } );
 
         } catch (error) {
 

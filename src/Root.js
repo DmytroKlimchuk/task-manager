@@ -6,6 +6,9 @@ import Signup from './components/user/signup';
 import Loading from './loading';
 import app from "./base";
 
+import store from './store/index';
+import { Provider } from 'react-redux';
+
 class Root extends Component {
 
     state = {
@@ -42,11 +45,13 @@ class Root extends Component {
         }
 
         return(
+            <Provider store={ store }>
             <Router history={browserHistory}>
                 <Route path='/login' component={Login} />
                 <Route path='/signup' component={Signup} />
                 {authenticated === true ? <Route path='*' component={App}/> : <Redirect path='/' to="/login"/>}
             </Router>
+            </Provider>
         );
     }
 }
