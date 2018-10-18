@@ -15,20 +15,22 @@ class Signup extends Component {
         event.preventDefault();
         const { email, password } = event.target.elements;
         try {
-            const user = app
+            const user = await app
                 .auth()
-                .createUserWithEmailAndPassword(email.value, password.value);
-            return MySwal.fire({
-                type: 'success',
-                title: 'Вітаємо!',
-                text: 'Користувача створено. Для входу викоростовуйте ваш email та пароль'
-            }).then( () => browserHistory.push(`/`) );
+                .createUserWithEmailAndPassword(email.value, password.value).then( value => {
+                    MySwal.fire({
+                        type: 'success',
+                        title: 'Вітаємо!',
+                        text: 'Користувача створено. Для входу викоростовуйте ваш email та пароль'
+                    }).then( () => browserHistory.push(`/`) );
+                })
 
-        } catch (error) {
+
+        } catch (err) {
             return MySwal.fire({
                 type: 'error',
                 title: 'Помилка!',
-                text: error
+                text: err
             })
         }
     };
